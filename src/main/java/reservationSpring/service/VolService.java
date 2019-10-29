@@ -15,7 +15,7 @@ import reservationSpring.model.Reservation;
 import reservationSpring.model.Vol;
 import reservationSpring.repository.VolRepository;
 
-@Service
+@Service	
 public class VolService {
 
 	@Autowired
@@ -30,15 +30,15 @@ public class VolService {
 		return Vol;
 	}
 
-	public void delete(Vol vol) {
-		Optional<Vol> opt = volRepository.findById(vol.getIdVol());
-		if (opt.isPresent()) {
-			vol = opt.get();
-			Aeroport aeroportDepart = vol.getAeroportDepart();
-			for (Aeroport aeroport : vol.getAeroportDepart()) {
-				aeroport.setVolDepart(null);
-				aeroportRepository.save(aeroport);
-			}
-		}
-	}
+//	public void delete(Vol vol) {
+//		Optional<Vol> opt = volRepository.findById(vol.getIdVol());
+//		if (opt.isPresent()) {
+//			vol = opt.get();
+//			Aeroport aeroportDepart = vol.getAeroportDepart();
+//			for (Aeroport aeroport : vol.getAeroportDepart()) {
+//				aeroport.setVolDepart(null);
+//				aeroportRepository.save(aeroport);
+//			}
+//		}
+//	}
 }
