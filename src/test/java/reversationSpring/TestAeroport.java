@@ -31,13 +31,29 @@ public class TestAeroport {
 	private EscaleRepository escaleRepository;
 	
 	
+	
+	@Test 
+	public void testFindByKeyWithVille() {
+		
+		assertTrue(aeroportRepository.findByKeyWithVille((long) 100).isPresent());
+	}
+	
 	@Test
 	public void testFindAllCustomWithVille() {
 		assertNotEquals(0, aeroportRepository.findAllCustomWithVille());
 	}
 	
+	@Test 
+	public void testFindByKeyWithEscales() {
+		
+		assertTrue(aeroportRepository.findByKeyWithEscales((long) 100).isPresent());
+	}
 	
 	
+	@Test
+	public void testFindAllCustomWithEscales() {
+		assertNotEquals(0, aeroportRepository.findAllCustomWithEscales());
+	}
 	
 
 }
