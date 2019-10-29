@@ -18,14 +18,14 @@ public interface VolRepository extends JpaRepository<Vol, Long> {
 	public List<Vol> findAllCustomWithReservation();
 
 	@Query("select distinct v from Vol v left join fetch v.escales e where v.idVol=:key")
-	public Vol findByKeyWithEscale(@Param("key") Long key);
+	public Optional<Vol> findByKeyWithEscale(@Param("key") Long key);
 
 	@Query("select distinct v from Vol v left join fetch v.escales e")
 	public List<Vol> findAllCustomWithEscale();
 
 	@Query("select distinct v from Vol v left join fetch v.compagnieAerienneVol c left join fetch c.key.compagnieAerienne "
 			+ "where v.idVol=:key")
-	public Vol findByKeyWithCompagnie(@Param("key") Long key);
+	public Optional<Vol> findByKeyWithCompagnie(@Param("key") Long key);
 
 	@Query("select v from Vol v left join fetch v.compagnieAerienneVol c left join fetch c.key.compagnieAerienne")
 	public List<Vol> findAllCustomWithCompagnie();
