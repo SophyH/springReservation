@@ -1,5 +1,6 @@
 package reversationSpring;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -16,6 +17,7 @@ import reservationSpring.model.Reservation;
 import reservationSpring.repository.AeroportRepository;
 import reservationSpring.repository.EscaleRepository;
 import reservationSpring.repository.VilleRepository;
+import reservationSpring.service.AeroportService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/application-context.xml" })
@@ -30,30 +32,40 @@ public class TestAeroport {
 	@Autowired
 	private EscaleRepository escaleRepository;
 	
+	@Autowired
+	private AeroportService aeroportService;
 	
 	
-	@Test 
-	public void testFindByKeyWithVille() {
-		
-		assertTrue(aeroportRepository.findByKeyWithVille((long) 100).isPresent());
-	}
 	
+//	@Test 
+//	public void testFindByKeyWithVille() {
+//		
+//		assertTrue(aeroportRepository.findByKeyWithVille((long) 100).isPresent());
+//	}
+//	
+//	@Test
+//	public void testFindAllCustomWithVille() {
+//		assertNotEquals(0, aeroportRepository.findAllCustomWithVille());
+//	}
+//	
+////	@Test 
+////	public void testFindByKeyWithEscales() {
+////		
+////		assertTrue(aeroportRepository.findByKeyWithEscales((long) 100).isPresent());
+////	}
+//	
+//	
+//	@Test
+//	public void testFindAllCustomWithEscales() {
+//		assertNotEquals(0, aeroportRepository.findAllCustomWithEscales());
+//	}
+//	
 	@Test
-	public void testFindAllCustomWithVille() {
-		assertNotEquals(0, aeroportRepository.findAllCustomWithVille());
+	public void testDeleteAeroportByKey() {
+				
+		aeroportService.deleteByKey((long)100);
+		assertFalse(aeroportRepository.findByKeyWithVille((long)100).isPresent());
 	}
-	
-	@Test 
-	public void testFindByKeyWithEscales() {
-		
-		assertTrue(aeroportRepository.findByKeyWithEscales((long) 100).isPresent());
-	}
-	
-	
-	@Test
-	public void testFindAllCustomWithEscales() {
-		assertNotEquals(0, aeroportRepository.findAllCustomWithEscales());
-	}
-	
+
 
 }

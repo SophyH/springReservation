@@ -47,7 +47,7 @@
 		qui ne sont pas dans le VendorAdapter -->
 		<property name="jpaProperties">
 			<props>
-				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<prop key="hibernate.format_sql">true</prop>
 			</props>
 		</property>
