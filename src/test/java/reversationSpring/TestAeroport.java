@@ -1,5 +1,6 @@
 package reversationSpring;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
@@ -31,8 +32,8 @@ public class TestAeroport {
 	
 	
 	@Test
-	public void testFindByKeyWithVille() {
-		assertTrue(aeroportRepository.findByKeyWithVille((long) 100).isPresent());
+	public void testFindAllCustomWithVille() {
+		assertNotEquals(0, aeroportRepository.findAllCustomWithVille());
 	}
 	
 	
