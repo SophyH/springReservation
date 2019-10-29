@@ -49,6 +49,11 @@ public class Passager {
 
 	}
 
+	public Passager(String nomPassager) {
+		super();
+		this.nomPassager = nomPassager;
+	}
+
 	public Long getIdPassager() {
 		return idPassager;
 	}
