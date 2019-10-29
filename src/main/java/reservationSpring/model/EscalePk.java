@@ -24,26 +24,18 @@ public class EscalePk implements Serializable{
 	private Vol vol;
 	
 	
-	@Column(name = "heure_depart")
-	@Temporal(TemporalType.TIME)
-	private Date heureDepart;
 	
-	@Column(name = "heure_arrivee")
-	@Temporal(TemporalType.TIME)
-	private Date heureArrivee;
 
 	public EscalePk(Aeroport aeroport, Vol vol, Date heureDepart, Date heureArrivee) {
 		super();
 		this.aeroport = aeroport;
 		this.vol = vol;
-		this.heureDepart = heureDepart;
-		this.heureArrivee = heureArrivee;
+		
 	}
 
 	public EscalePk(Date heureDepart, Date heureArrivee) {
 		super();
-		this.heureDepart = heureDepart;
-		this.heureArrivee = heureArrivee;
+		
 	}
 
 	public EscalePk() {
@@ -67,21 +59,7 @@ public class EscalePk implements Serializable{
 		this.vol = vol;
 	}
 
-	public Date getHeureDepart() {
-		return heureDepart;
-	}
-
-	public void setHeureDepart(Date heureDepart) {
-		this.heureDepart = heureDepart;
-	}
-
-	public Date getHeureArrivee() {
-		return heureArrivee;
-	}
-
-	public void setHeureArrivee(Date heureArrivee) {
-		this.heureArrivee = heureArrivee;
-	}
+	
 
 	@Override
 	public int hashCode() {

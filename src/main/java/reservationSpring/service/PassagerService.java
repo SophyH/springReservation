@@ -32,7 +32,7 @@ public class PassagerService {
 	}
 
 	public void delete(Passager passager) {
-		Optional<Passager> opt = passagerRepository.findById(passager.getIdPassager());
+		Optional<Passager> opt = passagerRepository.findByIdPassagerWithReservation(passager.getIdPassager());
 		if (opt.isPresent()) {
 			passager = opt.get();
 			Set<Reservation> reservation = passager.getReservation();
@@ -45,9 +45,10 @@ public class PassagerService {
 	}
 
 	public void deleteByKey(Long key) {
-		Optional<Passager> opt = passagerRepository.findById(key);
+		Optional<Passager> opt = passagerRepository.findByIdPassagerWithReservation(key);
+		Passager passager = null;
 		if (opt.isPresent()) {
-			Passager passager = opt.get();
+			passager = opt.get();
 			Set<Reservation> reservation = passager.getReservation();
 			for (Reservation r : reservation) {
 				r.setPassager(null);

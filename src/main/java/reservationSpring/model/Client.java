@@ -128,6 +128,7 @@ public abstract class Client {
 
 
 
+	
 	public Long getId() {
 		return this.id;
 	}

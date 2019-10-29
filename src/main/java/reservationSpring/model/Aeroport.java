@@ -57,6 +57,15 @@ public class Aeroport {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public Aeroport(String nomAeroport) {
+		super();
+		this.nomAeroport = nomAeroport;
+	}
+
+
 
 	public Long getIdAeroport() {
 		return idAeroport;
