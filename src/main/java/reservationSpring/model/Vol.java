@@ -84,9 +84,9 @@ public class Vol {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Vol(Long idVol) {
+	public Vol(Date dateDepart) {
 		super();
-		this.idVol = idVol;
+		this.dateDepart = dateDepart;
 	}
 
 	public Long getIdVol() {
