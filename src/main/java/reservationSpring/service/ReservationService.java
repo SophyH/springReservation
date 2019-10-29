@@ -26,23 +26,18 @@ public class ReservationService {
 	}
 
 	public void delete(Reservation reservation) {
-		Optional<Reservation> opt = reservationRepository.findById(reservation.getIdReservation());
+		Optional<Reservation> opt = reservationRepository
+				.findByIdReservationWithVolsAndPassagerAndClient(reservation.getIdReservation());
 		if (opt.isPresent()) {
 			reservation = opt.get();
-			reservation.getVols().setReservation(null);
-			reservation.getPassager().setReservation(null);
-			reservation.getClient().setReservations(null);
 			reservationRepository.delete(reservation);
 		}
 	}
 
 	public void deleteByKey(Long key) {
-		Optional<Reservation> opt = reservationRepository.findById(key);
+		Optional<Reservation> opt = reservationRepository.findByIdReservationWithVolsAndPassagerAndClient(key);
 		if (opt.isPresent()) {
 			Reservation reservation = opt.get();
-			reservation.getVols().setReservation(null);
-			reservation.getPassager().setReservation(null);
-			reservation.getClient().setReservations(null);
 			reservationRepository.delete(reservation);
 		}
 	}

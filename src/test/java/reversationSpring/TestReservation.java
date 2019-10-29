@@ -1,5 +1,6 @@
 package reversationSpring;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -15,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import reservationSpring.model.Reservation;
 import reservationSpring.repository.ReservationRepository;
+import reservationSpring.service.ReservationService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/application-context.xml" })
@@ -22,6 +24,9 @@ public class TestReservation {
 
 	@Autowired
 	private ReservationRepository reservationRepository;
+
+	@Autowired
+	private ReservationService reservationService;
 
 	@Test
 	public void test() {
@@ -33,7 +38,7 @@ public class TestReservation {
 
 	@Test
 	public void testFindWithPassager() {
-		assertTrue(reservationRepository.findByIdReservationWithPassager((long) 100).isPresent());
+		assertTrue(reservationRepository.findByIdReservationWithPassager((long) 105).isPresent());
 	}
 
 	@Test
@@ -43,7 +48,7 @@ public class TestReservation {
 
 	@Test
 	public void testFindByIdReservationWithVols() {
-		assertTrue(reservationRepository.findByIdReservationWithVols((long) 100).isPresent());
+		assertTrue(reservationRepository.findByIdReservationWithVols((long) 105).isPresent());
 	}
 
 	@Test
@@ -53,7 +58,7 @@ public class TestReservation {
 
 	@Test
 	public void testFindByIdReservationWithVolsAndPassager() {
-		assertTrue(reservationRepository.findByIdReservationWithVolsAndPassager((long) 100).isPresent());
+		assertTrue(reservationRepository.findByIdReservationWithVolsAndPassager((long) 105).isPresent());
 	}
 
 	@Test
@@ -63,7 +68,7 @@ public class TestReservation {
 
 	@Test
 	public void testFindWithClient() {
-		assertTrue(reservationRepository.findByIdReservationWithClient((long) 100).isPresent());
+		assertTrue(reservationRepository.findByIdReservationWithClient((long) 105).isPresent());
 	}
 
 	@Test
@@ -80,6 +85,12 @@ public class TestReservation {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	public void testDeleteByKey() {
+		reservationService.deleteByKey((long) 101);
+		assertFalse(reservationRepository.findById((long) 101).isPresent());
 	}
 
 }

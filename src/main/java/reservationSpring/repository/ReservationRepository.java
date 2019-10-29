@@ -42,4 +42,12 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 	@Query("select distinct r from Reservation r left join fetch r.client left join fetch r.passager ")
 	public List<Reservation> findAllWithClient();
 
+	@Query("select distinct r from Reservation r left join fetch r.passager p left join fetch p.reservation left join fetch r.client "
+			+ "left join fetch r.vols v left join fetch v.reservation left join fetch r.client c left join fetch c.reservations where r.idReservation=:key")
+	public Optional<Reservation> findByIdReservationWithVolsAndPassagerAndClient(@Param("key") Long key);
+
+	@Query("select distinct r from Reservation r left join fetch r.passager p left join fetch p.reservation left join fetch r.client "
+			+ "left join fetch r.vols v left join fetch v.reservation left join fetch r.client c left join fetch c.reservations")
+	public List<Reservation> findAllWithVolsAndPassagerAndClient();
+
 }
