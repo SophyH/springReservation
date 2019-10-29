@@ -84,6 +84,11 @@ public class Vol {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Vol(Long idVol) {
+		super();
+		this.idVol = idVol;
+	}
+
 	public Long getIdVol() {
 		return idVol;
 	}

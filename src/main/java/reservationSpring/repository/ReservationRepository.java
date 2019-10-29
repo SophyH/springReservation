@@ -1,5 +1,6 @@
 package reservationSpring.repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,8 @@ import org.springframework.data.repository.query.Param;
 import reservationSpring.model.Reservation;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+
+	public List<Reservation> findByDateReservation(Date dateReservation);
 
 	@Query("select distinct r from Reservation r left join fetch r.passager left join fetch r.client where r.idReservation=:key")
 	public Optional<Reservation> findByIdReservationWithPassager(@Param("key") Long key);
