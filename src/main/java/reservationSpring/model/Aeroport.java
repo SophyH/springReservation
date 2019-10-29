@@ -35,7 +35,7 @@ public class Aeroport {
 	@Column(name = "id_aeroport")
 	private Long idAeroport;
 	
-	@Column(name = "nom_aeroport", length = 150, nullable = false)
+	@Column(name = "nom_aeroport", length = 150)
 	private String nomAeroport;
 	
 	

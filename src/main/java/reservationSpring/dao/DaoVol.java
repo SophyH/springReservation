@@ -2,7 +2,7 @@ package reservationSpring.dao;
 
 import java.util.List;
 
-import reservation.model.Vol;
+import reservationSpring.model.Vol;
 
 public interface DaoVol extends DaoGeneric<Vol, Long> {
 
