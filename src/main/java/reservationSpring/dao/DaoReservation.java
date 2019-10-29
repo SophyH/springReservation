@@ -1,25 +1,26 @@
 package reservationSpring.dao;
 
 import java.util.List;
+import java.util.Optional;
 
-import reservation.model.Reservation;
+import reservationSpring.model.Reservation;
 
 public interface DaoReservation extends DaoGeneric<Reservation, Long> {
 
-	Reservation findByKeyWithPassager(Long key);
+	public Optional<Reservation> findByKeyWithPassager(Long key);
 
-	List<Reservation> findAllWithPassager();
+	public List<Reservation> findAllWithPassager();
 
-	Reservation findByKeyWithVols(Long key);
+	public Optional<Reservation> findByKeyWithVols(Long key);
 
-	List<Reservation> findAllWithVols();
+	public List<Reservation> findAllWithVols();
 
-	Reservation findByKeyWithVolsAndPassager(Long key);
+	public Optional<Reservation> findByKeyWithVolsAndPassager(Long key);
 
-	List<Reservation> findAllWithVolsAndPassager();
+	public List<Reservation> findAllWithVolsAndPassager();
 
-	Reservation findByKeyWithClient(Long key);
+	public Optional<Reservation> findByKeyWithClient(Long key);
 
-	List<Reservation> findAllWithClient();
+	public List<Reservation> findAllWithClient();
 
 }
