@@ -1,6 +1,7 @@
 package reservationSpring.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,17 +16,20 @@ import reservationSpring.model.Login;
 
 public interface ClientRepository extends JpaRepository<Client, Long>{
 	@Query("select distinct c from Client c left join fetch c.reservations where c.id = :id")
-	Client findByIdWithReservations(@Param("id")Long id);
+	public Optional <Client> findByIdWithReservations(@Param("id")Long id);
 	
 	@Query("select distinct c from Client c left join fetch c.reservations")
-	List<Client> findAllCustomWithReservations();
+	public List<Client> findAllCustomWithReservations();
 
-	List<ClientEI> findAllCustomClientEI();
+	@Query("select distinct cei from ClientEI")
+	public List<ClientEI> findAllCustomClientEI();
 	
-	List<ClientMoral> findAllCustomClientMoral();
+	@Query("select distinct cm from ClientMoral")
+	public List<ClientMoral> findAllCustomClientMoral();
 	
-	List<ClientPhysique> findAllCustomClientPhysique();
+	@Query("select distinct cp from ClientPhysique")
+	public List<ClientPhysique> findAllCustomClientPhysique();
 	
 	@Query("select distinct c from Client c left join fetch c.login =:login")
-	Client findByLoginWithReservations(@Param("login") Login login);
+	public Optional<Client> findByLoginWithReservations(@Param("login") Login login);
 }
