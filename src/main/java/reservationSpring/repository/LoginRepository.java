@@ -12,11 +12,13 @@ import reservationSpring.model.Login;
 
 public interface LoginRepository extends JpaRepository<Login, Long>{
 	
-	@Query("select distinct l from Login where id=:id")
+	@Query("select distinct l from Login l left join fetch l.client where l.id=:id")
 	public Optional<Login> findByIdWithClient(@Param("id") Long id);
 	
-	public Optional<Login> findByLogin(String login); 
+	@Query("select distinct l from Login l where l.login=:login")
+	public Optional<Login> findByLogin(@Param("login") String login); 
 	
+	@Query("select distinct l from Login l left join fetch l.client")
 	public List<Login> findAllCustomWithClient();
 
 }
