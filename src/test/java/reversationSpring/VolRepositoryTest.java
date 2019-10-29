@@ -1,4 +1,4 @@
-package reservationSpring;
+package reversationSpring;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -28,7 +28,7 @@ public class VolRepositoryTest {
 	@Autowired
 	private VolRepository volRepository;
 
-	@Test
+	// @Test
 	public void testInsert() {
 		Vol vol = new Vol();
 		volRepository.save(vol);
@@ -37,14 +37,57 @@ public class VolRepositoryTest {
 	}
 
 //	@Test
-//	public void testFindByKeyWithReservation() {
-//		Optional<Vol> opt = volRepository.findByKeyWithReservation((long) 100);
-//		assertNotEquals(0, opt.get().getReservation().size());
+//	public void testDelete() {
+//
+//	}
+//
+//	@Test
+//	public void testUpdate() {
+//
+//	}
+//
+//	@Test
+//	public void testFindByKey() {
+//
+//	}
+//
+//	@Test
+//	public void testFindAll() {
+//
 //	}
 
-//	@Test
-//	public void testfindByKeyWithEscale() {
-//		Optional<Vol> opt = volRepository.findByKeyWithEscale(100);
-//		assertNotEquals(0, opt.get().getEscales().size());
-//	}
+	@Test
+	public void testFindByKeyWithReservation() {
+		assertTrue(volRepository.findByKeyWithReservation((long) 100).isPresent());
+	}
+
+	@Test
+	public void testFindAllCustomWithReservation() {
+		assertNotEquals(0, volRepository.findAllCustomWithReservation());
+	}
+
+	@Test
+	public void testFindByKeyWithEscale() {
+		assertTrue(volRepository.findByKeyWithEscale((long) 100).isPresent());
+	}
+
+	@Test
+	public void testFindByKeyWithCompagnie() {
+		assertTrue(volRepository.findByKeyWithCompagnie((long) 100).isPresent());
+	}
+
+	@Test
+	public void testFindAllCustomWithCompagnie() {
+		assertNotEquals(0, volRepository.findAllCustomWithCompagnie());
+	}
+
+	@Test
+	public void testFindByKeyWithAeroport() {
+		assertTrue(volRepository.findByKeyWithAeroport((long) 100).isPresent());
+	}
+
+	@Test
+	public void testFindAllCustomWithAeroport() {
+		assertNotEquals(0, volRepository.findAllCustomWithAeroport());
+	}
 }
