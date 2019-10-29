@@ -17,4 +17,8 @@ public interface PassagerRepository extends JpaRepository<Passager, Long> {
 	@Query("select p from Passager p left join fetch p.reservation r left join fetch r.vols left join fetch r.client")
 	public List<Passager> findAllWithReservation();
 
+	public List<Passager> findByNomPassagerLike(String nomPassager);
+
+	public List<Passager> findbyNomPassager(String nomPassager);
+
 }

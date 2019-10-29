@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import reservationSpring.repository.PassagerRepository;
 import reservationSpring.repository.ReservationRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,9 +17,6 @@ public class TestReservation {
 
 	@Autowired
 	private ReservationRepository reservationRepository;
-
-	@Autowired
-	private PassagerRepository passagerRepository;
 
 //	@Test
 //	public void test() {
@@ -69,5 +65,16 @@ public class TestReservation {
 	public void testFindAllWithClient() {
 		assertNotEquals(0, reservationRepository.findAllWithClient());
 	}
+
+//	@Test
+//	public void testFindByDate() {
+//		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//		try {
+//			assertNotEquals(0, reservationRepository.findByDateReservation(sdf.parse("12/11/2011")));
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 
 }
