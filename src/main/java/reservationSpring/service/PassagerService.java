@@ -46,8 +46,9 @@ public class PassagerService {
 
 	public void deleteByKey(Long key) {
 		Optional<Passager> opt = passagerRepository.findById(key);
+		Passager passager = null;
 		if (opt.isPresent()) {
-			Passager passager = opt.get();
+			passager = opt.get();
 			Set<Reservation> reservation = passager.getReservation();
 			for (Reservation r : reservation) {
 				r.setPassager(null);

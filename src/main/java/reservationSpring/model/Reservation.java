@@ -46,6 +46,11 @@ public class Reservation {
 
 	}
 
+	public Reservation(Integer numeroReservation) {
+		super();
+		this.numeroReservation = numeroReservation;
+	}
+
 	public Reservation(Client client) {
 		super();
 		this.client = client;
