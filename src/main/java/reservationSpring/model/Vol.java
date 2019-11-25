@@ -20,6 +20,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "vol")
 @SequenceGenerator(name = "seqVol", sequenceName = "seq_vol", initialValue = 100, allocationSize = 1)
@@ -45,18 +47,22 @@ public class Vol {
 
 	@Column(name = "date_depart")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateDepart;
 
 	@Column(name = "heure_depart")
 	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern="HH:mm")
 	private Date heureDepart;
 
 	@Column(name = "date_arrivee")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateArrivee;
 
 	@Column(name = "heure_arrivee")
 	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern="HH:mm")
 	private Date heureArrivee;
 
 	@ManyToOne
